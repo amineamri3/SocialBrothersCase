@@ -123,8 +123,9 @@ namespace SocialBrothersCase.Controllers
 
             query = query.Where(where_clause, search);
             }
+            
             if (sort_direction != "") sortby += " " + sort_direction;
-            query = query.OrderBy(sortby);
+            if (sortby!=null) query = query.OrderBy(sortby);
 
 
 
