@@ -23,6 +23,8 @@ namespace SocialBrothersCase
         public string? Country { get; set; }
 
 
+
+
         public IDictionary<string, string> validate()
         {
             IDictionary<string, string> errors = new Dictionary<string, string>();
@@ -43,7 +45,7 @@ namespace SocialBrothersCase
             //Another solution is to load a specific regex expression for every country,but we would need to at least offer a country list through our API
             //or it will be ambiguous
 
-            string ZipCodePattern = "(?i)^[a-z0-9][a-z0-9\\-]{0,10}[a-z0-9]$"; //maximum of 10 characters A-Z,0-9 and 1 whitespace or dash
+            string ZipCodePattern = "(?i)^[a-zA-Z0-9][a-zA-Z0-9\\-\\ ]{0,10}[a-zA-Z0-9]$"; //maximum of 10 characters A-Z,0-9 and 1 whitespace or dash
             if (!Regex.IsMatch(ZipCode, ZipCodePattern))
             {
                 errors.Add("ZipCode" ,"field can only contain a maximum of 11 alphanumeric characters and 1 seperator (whitespace or dash)");
@@ -70,6 +72,12 @@ namespace SocialBrothersCase
 
             return errors;
         }
+
+        public override string ToString()
+        {
+            return Id + " " + Street + " " + HouseNumber + " " + ZipCode + " " + City + " " + Country;
+        }
+
     }
 
 }
