@@ -11,30 +11,30 @@ This assignment consists of 3 parts:
 ## Part 1
 This part is the easiest part, it consists of mainly setting up the project and the database and creating .
 
-What is used in this part:
+What i used in this part:
 - Regex for input validation
 - Swagger for documentation
 
-What i *should* used in this part:
+What i *should* have used in this part:
 - A DTO to seperate the user input model and the actual entity
 ## Part 2
-This is by far the hardest part of this case, my understanding of Linq was pretty poor going into this assignement but after spending some time trying out solutions i actually learned some stuff!
+This is by far the hardest part of this case, my understanding of Linq was pretty poor going into this assignement but after spending some time trying out solutions I actually learned some stuff!
 
-Starting off i actually has no idea how to implement this in Linq on top of my head so the first solutions i came up with where 
+Starting off I actually had no idea how to implement this in Linq on top of my head so the first solutions i came up with where 
 - Loading the db and filtering/sorting by code (Pretty bad idea yea!)
-- Building a raw SQL query from the entity (Easy solution but it's a workaround and admitting defeat)
+- Building a raw SQL query from the entity (Easy solution but it's a workaround)
 - Actually **learning Linq** enough to implement this solution (which was partially done after hours of googling)
 
 Note: I wasn't able to actually make a native Linq query (That is translatable to SQL) in time and so I opted to use a [package](https://dynamic-linq.net/) that adds some functionalites to Linq
  
-What interested me was how Linq queries actually work and i decided to test their performance to see if it was worth upgrading from a raw SQL query to Linq and so i created 3 API Endpoints
+What interested me was how Linq queries actually work and I decided to test their performance to see if it was worth upgrading from a raw SQL query to Linq and so I created 3 API Endpoints
 
 - /code: loadup the db and search/sort by code
 - /rawsql: generate a raw SQL query from the Entity proprieties and run it.
 - /linq: using dynamic linq
 
 
-To actually compare these 3 solutions i had to generate a large dataset and so i wrote a python script *dbdump.py* that inserts random data into our sqlite database, and another script *benchmark.py* that sends GET requests to those routes with random input.
+To actually compare these 3 solutions I had to generate a large dataset and so i wrote a python script *dbdump.py* that inserts random data into our sqlite database, and another script *benchmark.py* that sends GET requests to those routes with random input.
 
 To try to make this benchmark as accurate as i can i sent the same exact input to all 3 Endpoints and i sent 50 request to try eleminating outside factors.
 This benchmark is still far from acurate but it can give us some insight.
